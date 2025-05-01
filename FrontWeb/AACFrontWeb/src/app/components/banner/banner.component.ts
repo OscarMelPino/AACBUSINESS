@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NavigationComponent } from "../navigation/navigation.component";
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-banner',
@@ -9,7 +9,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     MaterialModule,
     NavigationComponent,
-    RouterOutlet
+    RouterOutlet,
+    RouterLink
 ],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.css'

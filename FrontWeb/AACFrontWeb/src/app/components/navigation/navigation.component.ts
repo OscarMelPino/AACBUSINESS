@@ -12,12 +12,12 @@ import { NavigationModel } from '../../models/NavigationModel';
 })
 export class NavigationComponent {
 
-  constructor(private readonly router: Router){}
+  constructor(private readonly router: Router){ }
 
   readonly areas: NavigationModel[] = [
-    {route: 'crafting', textTemplate: 'Crafting'}, 
-    {route: 'ehpcalculator', textTemplate: 'EHP Calculator'}, 
-    {route: 'regrade', textTemplate: 'Regrade Simulator'}   
+    {route: 'crafting', textTemplate: 'Crafting', selected : this.router.url.endsWith('crafting')}, 
+    {route: 'ehpcalculator', textTemplate: 'EHP Calculator', selected : this.router.url.endsWith('ehpcalculator')}, 
+    {route: 'regrade', textTemplate: 'Regrade Simulator', selected : this.router.url.endsWith('regrade')}   
   ]
 
 
