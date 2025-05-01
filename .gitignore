@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BackEnd/.vs
+/BackEnd/AACBackEnd/bin/Debug/net8.0
+/BackEnd/AACBackEnd/.vs/AACBackEnd/config
+/BackEnd/AACBackEnd/.vs/AACBackEnd/FileContentIndex
+/BackEnd/AACBackEnd/.vs/AACBackEnd/v17
+/BackEnd/AACBackEnd/obj
