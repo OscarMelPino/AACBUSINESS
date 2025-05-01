@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NavigationComponent } from "../navigation/navigation.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { UserAAC } from '../../models/UserAAC';
 
 @Component({
   selector: 'app-banner',
@@ -19,4 +20,6 @@ export class BannerComponent {
   
   showFiller: boolean = false;
 
+  @Input()
+  user?:UserAAC
 }

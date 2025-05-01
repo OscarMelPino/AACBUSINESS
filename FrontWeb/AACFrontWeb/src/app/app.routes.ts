@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { LandingComponent } from './pages/landing/landing/landing.component';
-import { EHPCalculatorComponent } from './pages/EHPCalculator/ehpcalculator/ehpcalculator.component';
-import { CraftingComponent } from './pages/Crafting/crafting/crafting.component';
-import { RegradeSimulatorComponent } from './pages/RegradeSimulator/regradesimulator/regradesimulator.component';
+import { LandingComponent } from './pages/Landing/landing.component';
+import { EHPCalculatorComponent } from './pages/EHPCalculator/ehpcalculator.component';
+import { CraftingComponent } from './pages/Crafting/crafting.component';
+import { RegradeSimulatorComponent } from './pages/RegradeSimulator/regradesimulator.component';
+import { ErrorComponent } from './pages/Error/error.component';
+import { LoginComponent } from './pages/Login/login.component';
 
 export const routes: Routes = [
     { path: '', component: LandingComponent},
-    { path: 'ehpcalculator', component: EHPCalculatorComponent},
+    { path: 'login', component: LoginComponent},
     { path: 'crafting', component: CraftingComponent},
     { path: 'regrade', component: RegradeSimulatorComponent},
-    { path: 'login', component: LoginComponent},
-    { path: '**', component: LoginComponent},
+    { path: 'ehpcalculator', component: EHPCalculatorComponent},
+    { path: '**', component: ErrorComponent}
 ];

@@ -1,1 +1,20 @@
-<h1>   HELLO {{ this.username }} </h1> 
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label for="username">Username</mat-label>
+        <input matInput formControlName="username" required   />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label  for="password">Enter your password</mat-label>
+        <input matInput formControlName="password" required [type]="hide() ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button mat-flat-button type="submit"> Log in</button>
+</form>
