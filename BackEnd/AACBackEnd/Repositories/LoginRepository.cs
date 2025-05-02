@@ -1,17 +1,39 @@
-﻿using AACBackEnd.Models;
+﻿using AACBackEnd.Database;
+using AACBackEnd.Helpers;
+using AACBackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AACBackEnd.Repositories
 {
-    public class LoginRepository : DbContext
+    public class LoginRepository : ILoginRepository
     {
 
-        public LoginRepository() { }
-
-        public LoginRepository(DbContextOptions<LoginRepository> options) : base(options)
+        // make it singleton    
+        private readonly AppDbContext _context;
+        public LoginRepository(AppDbContext context)
         {
+            this._context = context;
         }
 
-        public static DbSet<LoginModel> Logins { get; set; } = null!;
+        public async Task<NewLogin?> GetLoginByUsernameAndPassword(string username, string password)
+        {
+            var user = await _context.AAC_USERS.FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
+
+            if (user == null)
+                return null;
+
+            return new NewLogin { UserId = (uint)user.UserId, LastLogin = user.LastLogin, Username = user.Username };
+        }
+
+        public async Task<NewLogin?> GetLastUser()
+        {
+            var lastUser = await _context.AAC_USERS.OrderByDescending(user => user.UserId).FirstOrDefaultAsync();
+
+            if (lastUser is null)
+                return null;
+
+            return new NewLogin { UserId = (uint)lastUser.UserId, LastLogin = lastUser.LastLogin, Username = lastUser.Username };
+
+        }
     }
 }

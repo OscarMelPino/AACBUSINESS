@@ -1,6 +1,6 @@
-﻿using AACBackEnd.Models;
-using AACBackEnd.Services;
-using Microsoft.AspNetCore.Http;
+﻿using AACBackEnd.Database.DBModels;
+using AACBackEnd.Models;
+using AACBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AACBackEnd.Controllers
@@ -10,19 +10,25 @@ namespace AACBackEnd.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
-        private readonly ILoginService _loginService;
+        private readonly ILoginRepository _loginRepository;
         Managers.LoginManager _loginManager;
 
-        public LoginController(ILogger<LoginController> _logger, ILoginService loginService)
+        public LoginController(ILogger<LoginController> _logger, ILoginRepository loginRepository)
         {
             this._logger = _logger;
-            _loginService = loginService;
-            this._loginManager = new Managers.LoginManager(_loginService);
+            _loginRepository = loginRepository;
+            this._loginManager = new Managers.LoginManager(_loginRepository);
+        }
+
+        [HttpGet]
+        public Task<NewLogin?>? Get()
+        {
+            return this._loginManager.GetTestUser();
         }
 
         // GET: api/<ItemsController>
         [HttpPost]
-        public LoginModel? Post([FromBody] LoginRequest newLogin)
+        public Task<NewLogin?>? Post([FromBody] LoginRequest newLogin)
         {
             return this._loginManager.ValidateLogin(newLogin);
         }

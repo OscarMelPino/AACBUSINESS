@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { MaterialModule } from '../../modules/material/material.module';
 import { LoginService } from '../../services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserAAC } from '../../models/UserAAC';
-import { Subject } from 'rxjs';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
-import { config } from '../../../environment';
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
   selector: 'app-login',
@@ -30,21 +30,16 @@ export class LoginComponent {
     password:  new FormControl()
   })
 
-  hide = signal(true);
-
-  clickEvent(event: MouseEvent) {
-    this.hide.set(!this.hide());
-    event.stopPropagation();
-  }
-
   sendData(user: UserAAC){
     this.dataService.setData(user)
   }
 
   onSubmit(){
     if (this.loginForm.valid) {
-      try {      
-        this.loginService.postLogin(this.loginForm.value.username, this.loginForm.value.password).subscribe(user => {
+      try {              
+        const hashedPassword = CryptoJS.MD5(this.loginForm.value.password).toString();
+
+        this.loginService.postLogin(this.loginForm.value.username, hashedPassword).subscribe(user => {
           this.sendData(user)
           this.router.navigate([''])
       })

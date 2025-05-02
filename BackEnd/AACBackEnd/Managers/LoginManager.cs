@@ -1,22 +1,27 @@
-﻿using AACBackEnd.Models;
-using AACBackEnd.Services;
+﻿using AACBackEnd.Database.DBModels;
+using AACBackEnd.Models;
+using AACBackEnd.Repositories;
 
 namespace AACBackEnd.Managers
 {
     public class LoginManager : BaseManager
     {
-        private readonly ILoginService _loginService;
+        private readonly ILoginRepository _loginService;
 
-        public LoginManager(ILoginService loginService)
+        public LoginManager(ILoginRepository loginService)
         {
             this._loginService = loginService;
         }
 
         // methods
-        public LoginModel ValidateLogin(LoginRequest credentials)
+        public Task<NewLogin?> ValidateLogin(LoginRequest credentials)
         {
-            // find in database based on username and password            
             return this._loginService.GetLoginByUsernameAndPassword(credentials.Username, credentials.Password);
+        }
+
+        public Task<NewLogin?> GetTestUser()
+        {
+            return this._loginService.GetLastUser();
         }
     }
 }
