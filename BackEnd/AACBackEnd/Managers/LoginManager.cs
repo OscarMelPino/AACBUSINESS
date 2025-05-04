@@ -14,14 +14,14 @@ namespace AACBackEnd.Managers
         }
 
         // methods
-        public Task<NewLogin?> ValidateLogin(LoginRequest credentials)
+        public async Task<NewLogin?> ValidateLogin(LoginRequest credentials)
         {
-            return this._loginService.GetLoginByUsernameAndPassword(credentials.Username, credentials.Password);
+            return await this._loginService.GetLoginByUsernameAndPassword(credentials.Username, credentials.Password);
         }
 
-        public Task<NewLogin?> GetTestUser()
+        public async Task<NewLogin?> GetTestUser()
         {
-            return this._loginService.GetLastUser();
+            return await this._loginService.GetLastUser();
         }
     }
 }

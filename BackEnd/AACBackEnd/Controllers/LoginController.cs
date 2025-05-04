@@ -21,16 +21,16 @@ namespace AACBackEnd.Controllers
         }
 
         [HttpGet]
-        public Task<NewLogin?>? Get()
+        public async Task<NewLogin?>? Get()
         {
-            return this._loginManager.GetTestUser();
+            return await this._loginManager.GetTestUser();
         }
 
         // GET: api/<ItemsController>
         [HttpPost]
-        public Task<NewLogin?>? Post([FromBody] LoginRequest newLogin)
+        public async Task<NewLogin?>? Post([FromBody] LoginRequest newLogin)
         {
-            return this._loginManager.ValidateLogin(newLogin);
+            return await this._loginManager.ValidateLogin(newLogin);
         }
 
     }
