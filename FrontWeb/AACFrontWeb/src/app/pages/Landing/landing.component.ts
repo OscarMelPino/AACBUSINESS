@@ -25,12 +25,6 @@ export class LandingComponent {
     });
   }
 
-  ngOnInit(){
-   if (!this.user){
-    this.router.navigate(['login'])
-   }   
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

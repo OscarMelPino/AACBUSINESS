@@ -14,3 +14,18 @@
   input.example-right-align {
     -moz-appearance: textfield;
   }
+  .form-container {
+    background-color: #1e1e1e91;
+    padding: 32px;
+    border: 1px solid #444;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 320px;
+    margin: 80px auto;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  

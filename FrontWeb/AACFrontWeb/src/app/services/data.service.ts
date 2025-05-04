@@ -11,6 +11,5 @@ export class DataService {
 
   setData(data: UserAAC) {
     this.data.next(data);
-    console.log('set data as ' + JSON.stringify(data))
   }
 }

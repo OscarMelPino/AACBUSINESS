@@ -1,11 +1,29 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-        <mat-label for="username">Username</mat-label>
-        <input matInput formControlName="username" required   />
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label  for="password">Enter your password</mat-label>
-        <input matInput formControlName="password" required type="password" />
-    </mat-form-field>
-    <button mat-flat-button type="submit"> Log in</button>
-</form>
+<div class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
+        <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Enter your username" autocomplete="off">
+        <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
+            Username is required
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')">
+            Minimum 3 characters
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter your password" autocomplete="new-password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Minimum 4 characters
+        </mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+        Log In
+        </button>
+    </form>
+</div>

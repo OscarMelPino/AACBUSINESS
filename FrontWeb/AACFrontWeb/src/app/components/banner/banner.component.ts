@@ -3,6 +3,7 @@ import { MaterialModule } from '../../modules/material/material.module';
 import { NavigationComponent } from "../navigation/navigation.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserAAC } from '../../models/UserAAC';
+import { LoginComponent } from '../../pages/Login/login.component';
 
 @Component({
   selector: 'app-banner',
@@ -11,7 +12,8 @@ import { UserAAC } from '../../models/UserAAC';
     MaterialModule,
     NavigationComponent,
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    LoginComponent
 ],
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.css'

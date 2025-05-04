@@ -5,12 +5,12 @@ import { CraftingComponent } from './pages/Crafting/crafting.component';
 import { RegradeSimulatorComponent } from './pages/RegradeSimulator/regradesimulator.component';
 import { ErrorComponent } from './pages/Error/error.component';
 import { LoginComponent } from './pages/Login/login.component';
+import { authGuard } from './services/auth-guard';
 
 export const routes: Routes = [
-    { path: '', component: LandingComponent},
-    { path: 'login', component: LoginComponent},
-    { path: 'crafting', component: CraftingComponent},
-    { path: 'regrade', component: RegradeSimulatorComponent},
-    { path: 'ehpcalculator', component: EHPCalculatorComponent},
-    { path: '**', component: ErrorComponent}
+    { path: 'crafting', component: CraftingComponent, canActivate: [authGuard]},
+    { path: 'regrade', component: RegradeSimulatorComponent, canActivate: [authGuard]},
+    { path: 'ehpcalculator', component: EHPCalculatorComponent, canActivate: [authGuard]},
+    { path: '', redirectTo: 'landing', pathMatch: 'full'},
+    { path: '**', redirectTo: 'login'}
 ];

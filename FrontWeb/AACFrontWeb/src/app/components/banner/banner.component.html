@@ -31,7 +31,12 @@
     </mat-drawer>
 
     <div class="example-sidenav-content">
-      <router-outlet />
+      @if (!this.user) {
+        <app-login></app-login>
+      } 
+      @else {
+        <router-outlet />
+      }    
     </div>
 
   </mat-drawer-container>

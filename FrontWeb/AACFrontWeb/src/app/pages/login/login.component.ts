@@ -1,18 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, Validators, FormGroup, ReactiveFormsModule  } from '@angular/forms';
 import { MaterialModule } from '../../modules/material/material.module';
 import { LoginService } from '../../services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserAAC } from '../../models/UserAAC';
 import { DataService } from '../../services/data.service';
-import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MaterialModule, ReactiveFormsModule, HttpClientModule],
+  imports: [MaterialModule, HttpClientModule, CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,31 +21,37 @@ import * as CryptoJS from 'crypto-js';
 export class LoginComponent {
 
   constructor(
+    private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router,
+    private authService: AuthService,
     private dataService: DataService
   ){}
 
-  loginForm = new FormGroup({
-    username:  new FormControl(),
-    password:  new FormControl()
-  })
+  loginForm:FormGroup = this.fb.group({
+    username: ['', [Validators.required, Validators.minLength(3)]],
+    password: ['', [Validators.required, Validators.minLength(4)]],
+  });
 
   sendData(user: UserAAC){
     this.dataService.setData(user)
   }
 
-  onSubmit(){
+  onSubmit(): void {
     if (this.loginForm.valid) {
-      try {              
-        const hashedPassword = CryptoJS.MD5(this.loginForm.value.password).toString();
-
-        this.loginService.postLogin(this.loginForm.value.username, hashedPassword).subscribe(user => {
-          this.sendData(user)
-          this.router.navigate([''])
-      })
-      } catch (error) {
-        alert('Login failed')
-      }}
+      const { username, password } = this.loginForm.value;
+      const hashedPassword = CryptoJS.MD5(password!).toString();
+  
+      this.loginService.postLogin(username!, hashedPassword).subscribe({
+        next: (user) => {
+          this.sendData(user);
+          this.authService.login(username!);
+        },
+        error: (err) => {
+          console.error('Login error:', err);
+          alert('Login failed. Please check your credentials.');
+        }
+      });
+    }
   }
+  
 }
