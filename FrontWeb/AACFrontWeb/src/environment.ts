@@ -3,5 +3,6 @@ export const config = {
     endpoints : {
         login : '/login',
         landing : '/landing'
-    }
+    },
+    isDebug : true
 }

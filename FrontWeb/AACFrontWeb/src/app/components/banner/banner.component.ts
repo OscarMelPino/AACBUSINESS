@@ -4,6 +4,8 @@ import { NavigationComponent } from "../navigation/navigation.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserAAC } from '../../models/UserAAC';
 import { LoginComponent } from '../../pages/Login/login.component';
+import { config } from '../../../environment';
+
 
 @Component({
   selector: 'app-banner',
@@ -24,4 +26,7 @@ export class BannerComponent {
 
   @Input()
   user?:UserAAC
+
+  isDebug = config.isDebug
+
 }

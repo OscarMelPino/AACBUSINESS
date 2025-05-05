@@ -31,7 +31,7 @@
     </mat-drawer>
 
     <div class="example-sidenav-content">
-      @if (!this.user) {
+      @if (!this.user && !this.isDebug) {
         <app-login></app-login>
       } 
       @else {
