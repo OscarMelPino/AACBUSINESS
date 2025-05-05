@@ -12,3 +12,9 @@ BackEnd/AACBackEnd/.vs/AACBackEnd/CopilotIndices/17.13.433.20974/CodeChunks.db
 BackEnd/AACBackEnd/.vs/AACBackEnd/CopilotIndices/17.13.433.20974/SemanticSymbols.db
 /.vs
 /BackEnd/AACBackEnd/.vs/AACBackEnd/CopilotIndices/17.13.444.19527
+/BackEnd/AACBackEnd/.vs/ProjectEvaluation/aacbackend.metadata.v9.bin
+/BackEnd/AACBackEnd/.vs/ProjectEvaluation/aacbackend.projects.v9.bin
+/BackEnd/AACBackEnd/.vs/ProjectEvaluation/aacbackend.strings.v9.bin
+/BackEnd/AACBackEnd/.vs/AACBackEnd/DesignTimeBuild/.dtbcache.v2
+*.db-wal
+*.db-shm
