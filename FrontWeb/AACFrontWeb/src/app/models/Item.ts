@@ -1,4 +1,5 @@
 export class Items {
-    name: string = '';
-    amount: number = 0;
+    itemId: number = 1;
+    itemName: string = '';
+    itemAmount: number = 0;
 }

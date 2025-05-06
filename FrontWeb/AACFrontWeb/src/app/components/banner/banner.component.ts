@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MaterialModule } from '../../modules/material/material.module';
 import { NavigationComponent } from "../navigation/navigation.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { UserAAC } from '../../models/UserAAC';
+import { Users } from '../../models/Users';
 import { LoginComponent } from '../../pages/Login/login.component';
 import { config } from '../../../environment';
 
@@ -25,7 +25,7 @@ export class BannerComponent {
   showFiller: boolean = false;
 
   @Input()
-  user?:UserAAC
+  user?:Users
 
   isDebug = config.isDebug
 

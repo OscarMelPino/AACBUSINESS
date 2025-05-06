@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserAAC } from '../models/UserAAC';
+import { Users } from '../models/Users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private data = new BehaviorSubject<UserAAC | null>(null);
+  private data = new BehaviorSubject<Users | null>(null);
   data$ = this.data.asObservable();
 
-  setData(data: UserAAC) {
+  setData(data: Users) {
     this.data.next(data);
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { config } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
+    if (config.isDebug)
+      return true
     return !!localStorage.getItem(this.STORAGE_KEY);
   }
 

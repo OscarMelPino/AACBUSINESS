@@ -60,20 +60,25 @@ namespace AACBackEnd.Repositories
         //    }
         //}
 
-        public async Task<List<Recipe>> GetAllRecipes()
+        public async Task<List<Recipe>?> GetAllRecipes()
         {
-            List<Recipe> recipes = new List<Recipe>();
+           var recipes = await _context.AAC_RECIPES.ToListAsync();
 
-            recipes = _context.AAC_RECIPES.Select(r => new Recipe
+            if (recipes == null) 
+                return null;
+
+            List<Recipe> recipeList = new List<Recipe>();
+            foreach (var recipe in recipes)
             {
-                RecipeId = r.RecipeId,
-                Name = r.Name,
-                IsItem = r.IsItem,
-                ItemsNeeded = r.ItemsNeeded
-            }).ToList();
-
-            if (recipes == null) return null;
-            return recipes;
+                recipeList.Add(new Recipe
+                {
+                    RecipeId = recipe.RecipeId,
+                    Name = recipe.Name,
+                    IsItem = recipe.IsItem,
+                    ItemsNeeded = recipe.ItemsNeeded
+                });
+            }
+            return recipeList;
         }
 
         public async Task<List<Recipe>> GetAllRecipesByItemId(int recipeId)

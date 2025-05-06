@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BannerComponent } from "../../components/banner/banner.component";
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
-import { UserAAC } from '../../models/UserAAC';
+import { Users } from '../../models/Users';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,14 +14,14 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent {
   subscription: Subscription;
-  user?: UserAAC;
+  user?: Users;
   
   constructor(
     private dataService: DataService,
     private router: Router
     ) {
     this.subscription = this.dataService.data$.subscribe(data => {
-      this.user = data as UserAAC;
+      this.user = data as Users;
     });
   }
 

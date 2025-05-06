@@ -3,9 +3,22 @@ import { provideHttpClient, withFetch } from '@angular/common/http'
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideToastr } from 'ngx-toastr';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync(), provideHttpClient(withFetch())]
+  providers: [
+    provideRouter(routes), 
+    provideClientHydration(), 
+    provideHttpClient(withFetch()), 
+    provideAnimations(),
+    provideToastr({
+      positionClass: 'toast-top-center',
+      timeOut: 3000,
+      closeButton: true,
+      tapToDismiss: true,
+      easeTime: 300
+    })
+  ]
 };

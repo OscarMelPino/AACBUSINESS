@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { config } from '../../environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserAAC } from '../models/UserAAC';
+import { Users } from '../models/Users';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class LoginService {
 
   private readonly apiurl = config.url + config.endpoints.login
 
-  public postLogin(username: string, password: string) : Observable<UserAAC> {
-    return this.http.post<UserAAC>(this.apiurl, {username, password})
+  public postLogin(username: string, password: string) : Observable<Users> {
+    return this.http.post<Users>(this.apiurl, {username, password})
   }
 
 }

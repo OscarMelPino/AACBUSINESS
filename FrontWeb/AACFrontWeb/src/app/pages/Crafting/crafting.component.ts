@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { AddItemComponent } from "../../components/add-item/add-item.component";
+import { AddRecipeeComponent } from "../../components/add-recipee/add-recipee.component";
 
 @Component({
   selector: 'app-crafting',
   standalone: true,
-  imports: [AddItemComponent],
+  imports: [AddRecipeeComponent],
   templateUrl: './crafting.component.html',
   styleUrl: './crafting.component.css'
 })
