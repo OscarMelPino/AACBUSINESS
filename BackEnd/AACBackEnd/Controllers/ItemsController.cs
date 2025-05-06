@@ -22,7 +22,7 @@ namespace AACBackEnd.Controllers
         }
 
         [HttpGet("{itemId}")]
-        public async Task<Item> GetItemById(int itemId)
+        public async Task<Item?> GetItemById(int itemId)
         {
             return await this._itemManager.GetItemById(itemId);
         }
@@ -39,7 +39,7 @@ namespace AACBackEnd.Controllers
             return await this._itemManager.AddItem(item);
         }
 
-        [HttpPost("modify")]
+        [HttpPut]
         public async Task<Item> ModifyItem([FromBody] Item item)
         {
             return await this._itemManager.ModifyItem(item);

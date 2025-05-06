@@ -19,7 +19,7 @@ namespace AACBackEnd.Controllers
             this._recipeManager = new Managers.RecipeManager(_recipeRepository);
         }
 
-        [HttpGet("{itemId}")]
+        [HttpGet("{recipeId}")]
         public async Task<Recipe?> GetRecipeByRecipeId(int recipeId)
         {
             return await this._recipeManager.GetRecipeByRecipeId(recipeId);
@@ -31,19 +31,19 @@ namespace AACBackEnd.Controllers
             return await this._recipeManager.GetAllRecipes();
         }
 
-        [HttpGet("byitem/{itemId}")]
-        public async Task<List<Recipe>> GetAllRecipesByItemId(int itemId)
-        {
-            return await this._recipeManager.GetAllRecipesByItemId(itemId);
-        }
+        //[HttpGet("/items/{itemId}")]
+        //public async Task<List<Recipe>> GetAllRecipesByItemId(int itemId)
+        //{
+        //    return await this._recipeManager.GetAllRecipesByItemId(itemId);
+        //}
 
-        [HttpPost("add")]
+        [HttpPost]
         public async Task<Recipe> AddRecipe([FromBody] Recipe recipe)
         {
             return await this._recipeManager.AddRecipe(recipe);
         }
 
-        [HttpPost("modify")]
+        [HttpPut]
         public async Task<Recipe> ModifyRecipe([FromBody] Recipe recipe)
         {
             return await this._recipeManager.ModifyRecipe(recipe);
