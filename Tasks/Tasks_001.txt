@@ -1,34 +1,34 @@
 In BackEnd:
-    - Models:
-        - Item: 
-            - ItemId - Int
-            - Name - String
-        - Recipee
-            - RecipeeId - Int
-            - Name - String
-            - IsItem - Boolean
-    - Managers:
-        - ItemManager
-        - RecipeeManager
-    - Controllers (pay special attention when creating  controllers, use the empty template)
-        - ItemController | HttpMethods: GET, PUT
-        - RecipeeController | HttpMethods: GET, POST, PUT
-    - Repositories
-        - ItemRepository (and its Interface)
-            - GetItems
-            - ModifyItem(Item)
-        - RecipeeRepository (and its Interface) 
-            - GetRecipees
-            - GetRecipeeById(recipeeId)
-            - AddRecipee(Recipee)
-            - ModifyRecipee(Recipee)
-    - Database
-        Edit the AppDbContext.cs to add the new tables
-    - Database.DBModels (yes, they are exactly the same as the api models, just with a different name, but they dont need to be)
-        - AAT_Items (important having the prefix AAT because it needs to match the database table)
-            - ItemId - Int
-            - Name - String
-        - AAT_Recipees (important having the prefix AAT because it needs to match the database table)
-            - RecipeeId - Int
-            - Name - String
-            - IsItem - Boolean
+    +Models:
+        + Item: 
+            + ItemId - Int
+            + Name - String
+        + Recipee
+            + RecipeeId - Int
+            + Name - String
+            + IsItem - Boolean
+    + Managers:
+        + ItemManager
+        + RecipeeManager
+    + Controllers (pay special attention when creating  controllers, use the empty template)
+        + ItemController | HttpMethods: GET, PUT
+        + RecipeeController | HttpMethods: GET, POST, PUT
+    + Repositories
+        + ItemRepository (and its +Interface)
+            + GetItems
+            + ModifyItem(Item)
+        + RecipeeRepository (and its +Interface) 
+            + GetRecipees
+            + GetRecipeeById(recipeeId)
+            + AddRecipee(Recipee)
+            + ModifyRecipee(Recipee)
+    + Database
+        + Edit the AppDbContext.cs to add the new tables
+    + Database.DBModels (yes, they are exactly the same as the api models, just with a different name, but they dont need to be)
+        + AAT_Items (important having the prefix AAT because it needs to match the database table)
+            + ItemId - Int
+            + Name - String
+        + AAT_Recipees (important having the prefix AAT because it needs to match the database table)
+            + RecipeeId - Int
+            + Name - String
+            + IsItem - Boolean

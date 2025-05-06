@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AACBackEnd.Models;
+using AACBackEnd.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,44 +10,45 @@ namespace AACBackEnd.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-
         private readonly ILogger<ItemsController> _logger;
+        private readonly IItemRepository _itemRepository;
+        Managers.ItemManager _itemManager;
 
-        public ItemsController(ILogger<ItemsController> _logger)
+        public ItemsController(ILogger<ItemsController> _logger, IItemRepository itemRepository)
         {
             this._logger = _logger;
+            _itemRepository = itemRepository;
+            this._itemManager = new Managers.ItemManager(_itemRepository);
         }
 
-        // GET: api/<ItemsController>
+        [HttpGet("{itemId}")]
+        public async Task<Item> GetItemById(int itemId)
+        {
+            return await this._itemManager.GetItemById(itemId);
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<Item>> GetAllItems()
         {
-            return new string[] { "value1", "value2" };
+            return await this._itemManager.GetAllItems();
         }
 
-        // GET api/<ItemsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ItemsController>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<Item> AddItem([FromBody] Item item)
         {
+            return await this._itemManager.AddItem(item);
         }
 
-        // PUT api/<ItemsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPost("modify")]
+        public async Task<Item> ModifyItem([FromBody] Item item)
         {
+            return await this._itemManager.ModifyItem(item);
         }
 
-        // DELETE api/<ItemsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //[HttpDelete("{itemId")]
+        //public async Task<bool> DeleteItem(int id)
+        //{
+        //    return await this._itemManager.DeleteItem(id);
+        //}
     }
 }

@@ -18,3 +18,5 @@ BackEnd/AACBackEnd/.vs/AACBackEnd/CopilotIndices/17.13.433.20974/SemanticSymbols
 /BackEnd/AACBackEnd/.vs/AACBackEnd/DesignTimeBuild/.dtbcache.v2
 *.db-wal
 *.db-shm
+/BackEnd/AACBackEnd/AACBackEnd.csproj.user
+/BackEnd/AACBackEnd/AACBackEnd.csproj.user

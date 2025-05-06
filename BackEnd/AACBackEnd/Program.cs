@@ -13,6 +13,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 
+//!!!!!!!!! Uncomment if ready to implement !!!!!!!!!!!
+//builder.Services.AddScoped<IItemRepository, ItemRepository>();
+//builder.Services.AddScoped<IRecipeRepository,RecipeRepository>();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("localhost"));
