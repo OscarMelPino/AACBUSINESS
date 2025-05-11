@@ -1,5 +1,5 @@
 export class Users {
     userId: number = 0;
-    username: string='';
+    username: string = '';
     lastLogin: Date = new Date();
 }

@@ -3,7 +3,8 @@ export const config = {
     endpoints : {
         login : '/login',
         landing : '/landing',
+        recipe : '/recipe',
         items: '/items'
     },
-    isDebug : true
+    isDebug : false
 }

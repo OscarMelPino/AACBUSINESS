@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormGroup, ReactiveFormsModule  } from '@angul
 import { MaterialModule } from '../../modules/material/material.module';
 import { LoginService } from '../../services/login.service';
 import { HttpClientModule } from '@angular/common/http';
-import { Users } from '../../models/Users';
+import { Users } from '../../models/UserModel';
 import { DataService } from '../../services/data.service';
 import * as CryptoJS from 'crypto-js';
 import { AuthService } from '../../services/auth.service';

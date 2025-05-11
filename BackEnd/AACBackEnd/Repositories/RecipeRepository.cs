@@ -1,8 +1,7 @@
-﻿using System.Runtime;
-using System.Transactions;
-using AACBackEnd.Database;
+﻿using AACBackEnd.Database;
 using AACBackEnd.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Transactions;
 
 namespace AACBackEnd.Repositories
 {
@@ -23,7 +22,6 @@ namespace AACBackEnd.Repositories
                 {
                     _context.AAC_RECIPES.Add(new Database.DBModels.AAC_RECIPES
                     {
-                        RecipeId = recipe.RecipeId,
                         Name = recipe.Name,
                         IsItem = recipe.IsItem,
                         ItemsNeeded = recipe.ItemsNeeded
@@ -62,9 +60,9 @@ namespace AACBackEnd.Repositories
 
         public async Task<List<Recipe>?> GetAllRecipes()
         {
-           var recipes = await _context.AAC_RECIPES.ToListAsync();
+            var recipes = await _context.AAC_RECIPES.ToListAsync();
 
-            if (recipes == null) 
+            if (recipes == null)
                 return null;
 
             List<Recipe> recipeList = new List<Recipe>();

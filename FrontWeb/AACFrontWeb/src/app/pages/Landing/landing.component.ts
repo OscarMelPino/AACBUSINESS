@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BannerComponent } from "../../components/banner/banner.component";
 import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
-import { Users } from '../../models/Users';
+import { Users } from '../../models/UserModel';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,34 +1,55 @@
-<div class="form-container">
-    <form [formGroup]="form" (ngSubmit)="addItem()" autocomplete="off">
-
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Recipee name</mat-label>
-        <input matInput type="text" formControlName="recipeeName" required min="1">
-      </mat-form-field>
-
+<div class="recipe-container" >
+  <!-- Left side: Ingredient Form -->
+  <div class="form-container" >
+    <form [formGroup]="itemForm" (ngSubmit)="addItem()">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Ingredient</mat-label>
-        <mat-select formControlName="itemName" required>
-          <mat-option *ngFor="let item of this.items" [value]="item.itemName">
-            {{ item.itemName }}
+        <mat-select formControlName="itemId" required>
+          <mat-option>
+            <input
+              matInput
+              placeholder="Type to filter"
+              [formControl]="filterControl"
+              (click)="$event.stopPropagation()" 
+              autocomplete="off"
+            />
+          </mat-option>
+          <mat-option *ngFor="let item of filteredItems" [value]="item.itemId">
+            {{ item.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-  
+    
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Amount needed</mat-label>
         <input matInput type="number" formControlName="itemAmount" required min="1">
       </mat-form-field>
-  
-      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="itemForm.invalid">
         Add to Recipe
       </button>
     </form>
-</div>
-<button mat-raised-button color="primary">
-  Save recipee
-</button>
+  </div>
 
-<div>
-    Current recipee: {{ this.recipee | json}}
+  <!-- Right side: Recipe summary -->
+  <div class="recipe-list-container">
+    <form [formGroup]="recipeForm" (ngSubmit)="addRecipe()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Recipe name</mat-label>
+        <input matInput type="text" formControlName="recipeeName">
+      </mat-form-field>
+      <mat-checkbox labelPosition="before" formControlName="isItem">Is also Item ?</mat-checkbox>
+      <button mat-raised-button color="accent" type="submit" [disabled]="recipeForm.invalid">
+        Save recipee
+      </button>
+    </form>
+
+    <!-- Table or list of added ingredients -->
+    <mat-card *ngFor="let item of this.recipe?.items" class="ingredient-row">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>{{ item.name }}</div>
+        <div>Amount: {{ item.itemAmount }}</div>
+      </div>
+    </mat-card>
+  </div>
 </div>
