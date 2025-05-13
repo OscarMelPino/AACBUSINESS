@@ -15,26 +15,21 @@ namespace AACBackEnd.Repositories
         }
         public async Task<Recipe> AddRecipe(Recipe recipe)
         {
-            var transactionOptions = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted, Timeout = TimeSpan.FromSeconds(30) };
-            using (var transaction = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+            try
             {
-                try
+                _context.AAC_RECIPES.Add(new Database.DBModels.AAC_RECIPES
                 {
-                    _context.AAC_RECIPES.Add(new Database.DBModels.AAC_RECIPES
-                    {
-                        Name = recipe.Name,
-                        IsItem = recipe.IsItem,
-                        ItemsNeeded = recipe.ItemsNeeded
-                    });
-                    await _context.SaveChangesAsync();
-                    transaction.Complete();
-                    return recipe;
-                }
-                catch (Exception ex)
-                {
-                    // Log the exception
-                    return null;
-                }
+                    Name = recipe.Name,
+                    IsItem = recipe.IsItem,
+                    ItemsNeeded = recipe.ItemsNeeded
+                });
+                await _context.SaveChangesAsync();
+                return recipe;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return null;
             }
         }
 

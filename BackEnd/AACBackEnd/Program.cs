@@ -1,4 +1,5 @@
 using AACBackEnd.Database;
+using AACBackEnd.Managers;
 using AACBackEnd.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+
+builder.Services.AddScoped<LoginManager>();
+builder.Services.AddScoped<ItemManager>();
+builder.Services.AddScoped<RecipeManager>();
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

@@ -1,4 +1,5 @@
-﻿using AACBackEnd.Models;
+﻿using AACBackEnd.Managers;
+using AACBackEnd.Models;
 using AACBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,11 +15,11 @@ namespace AACBackEnd.Controllers
         private readonly IItemRepository _itemRepository;
         Managers.ItemManager _itemManager;
 
-        public ItemsController(ILogger<ItemsController> _logger, IItemRepository itemRepository)
+        public ItemsController(ILogger<ItemsController> _logger, IItemRepository itemRepository, ItemManager itemManager)
         {
             this._logger = _logger;
             _itemRepository = itemRepository;
-            this._itemManager = new Managers.ItemManager(_itemRepository);
+            this._itemManager = itemManager;
         }
 
         [HttpGet("{itemId}")]

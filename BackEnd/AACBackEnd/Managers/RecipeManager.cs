@@ -6,9 +6,11 @@ namespace AACBackEnd.Managers
     public class RecipeManager : BaseManager
     {
         private readonly IRecipeRepository _recipeService;
-        public RecipeManager(IRecipeRepository recipeService)
+        private readonly IItemRepository _itemRepository;
+        public RecipeManager(IRecipeRepository recipeService, IItemRepository itemRepository)
         {
             this._recipeService = recipeService;
+            this._itemRepository = itemRepository;
         }
         public async Task<Recipe?> GetRecipeByRecipeId(int recipeId)
         {
@@ -24,6 +26,15 @@ namespace AACBackEnd.Managers
         }
         public async Task<Recipe> AddRecipe(Recipe recipe)
         {
+            if (recipe.IsItem)
+            {
+                var item = new Item
+                {
+                    Name = recipe.Name,
+                };
+                await this._itemRepository.AddItem(item);
+                return await this._recipeService.AddRecipe(recipe);
+            }
             return await this._recipeService.AddRecipe(recipe);
         }
         public async Task<Recipe> ModifyRecipe(Recipe recipe)

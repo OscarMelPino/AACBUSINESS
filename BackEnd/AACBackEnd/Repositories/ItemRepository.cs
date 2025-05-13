@@ -1,9 +1,7 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using System.Transactions;
-using AACBackEnd.Controllers;
-using AACBackEnd.Database;
+﻿using AACBackEnd.Database;
 using AACBackEnd.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Transactions;
 
 namespace AACBackEnd.Repositories
 {
@@ -17,25 +15,19 @@ namespace AACBackEnd.Repositories
 
         public async Task<Item> AddItem(Item item)
         {
-            var transactionOptions = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted, Timeout = TimeSpan.FromSeconds(30) };
-            using (var transaction = new TransactionScope(TransactionScopeOption.Required, transactionOptions))
+            try
             {
-                try
+                _context.AAC_ITEMS.Add(new Database.DBModels.AAC_ITEMS
                 {
-                    _context.AAC_ITEMS.Add(new Database.DBModels.AAC_ITEMS
-                    {
-                        ItemId = item.ItemId,
-                        Name = item.Name,
-                    });
-                    await _context.SaveChangesAsync();
-                    transaction.Complete();
-                    return item;
-                }
-                catch (Exception ex)
-                {
-                    // Log the exception
-                    return null;
-                }
+                    Name = item.Name,
+                });
+                await _context.SaveChangesAsync();
+                return item;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return null;
             }
         }
 
@@ -107,7 +99,7 @@ namespace AACBackEnd.Repositories
                     transaction.Complete();
                     return item;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     // Log the exception
                     return null;

@@ -1,4 +1,5 @@
 ﻿using AACBackEnd.Database.DBModels;
+using AACBackEnd.Managers;
 using AACBackEnd.Models;
 using AACBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,11 @@ namespace AACBackEnd.Controllers
         private readonly ILoginRepository _loginRepository;
         Managers.LoginManager _loginManager;
 
-        public LoginController(ILogger<LoginController> _logger, ILoginRepository loginRepository)
+        public LoginController(ILogger<LoginController> _logger, ILoginRepository loginRepository, LoginManager loginManager)
         {
             this._logger = _logger;
             _loginRepository = loginRepository;
-            this._loginManager = new Managers.LoginManager(_loginRepository);
+            this._loginManager = loginManager;
         }
 
         [HttpGet]

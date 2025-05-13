@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using AACBackEnd.Managers;
 using AACBackEnd.Models;
 using AACBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -10,13 +10,11 @@ namespace AACBackEnd.Controllers
     public class RecipeController : ControllerBase
     {
         private readonly ILogger<RecipeController> _logger;
-        private readonly IRecipeRepository _recipeRepository;
         Managers.RecipeManager _recipeManager;
-        public RecipeController(ILogger<RecipeController> _logger, IRecipeRepository recipeRepository)
+        public RecipeController(ILogger<RecipeController> _logger, IRecipeRepository recipeRepository, IItemRepository itemRepository, RecipeManager recipeManager)
         {
             this._logger = _logger;
-            _recipeRepository = recipeRepository;
-            this._recipeManager = new Managers.RecipeManager(_recipeRepository);
+            this._recipeManager = recipeManager;
         }
 
         [HttpGet("{recipeId}")]
