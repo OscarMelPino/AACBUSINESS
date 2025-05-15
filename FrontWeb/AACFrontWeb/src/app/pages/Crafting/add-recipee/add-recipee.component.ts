@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Items } from '../../models/Item';
-import { RecipeFormModel } from '../../models/RecipeModel';
-import { MaterialModule } from '../../modules/material/material.module';
-import { ItemsService } from '../../services/items.service';
-import { RecipeService } from '../../services/recipe.service';
-import { ToastService } from '../../services/toast.service';
+import { Items } from '../../../models/Item';
+import { RecipeFormModel } from '../../../models/RecipeModel';
+import { MaterialModule } from '../../../modules/material/material.module';
+import { ItemsService } from '../../../services/items.service';
+import { RecipeService } from '../../../services/recipe.service';
+import { ToastService } from '../../../services/toast.service';
 import { catchError, of } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-recipee',
@@ -21,7 +22,8 @@ export class AddRecipeeComponent {
     private fb: FormBuilder,
     private itemService: ItemsService,
     private recipeService: RecipeService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    public dialogRef: MatDialogRef<AddRecipeeComponent>
     ) {
 
 

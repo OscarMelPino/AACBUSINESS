@@ -6,5 +6,5 @@ export const config = {
         recipe : '/recipe',
         items: '/items'
     },
-    isDebug : false
+    isDebug : true
 }

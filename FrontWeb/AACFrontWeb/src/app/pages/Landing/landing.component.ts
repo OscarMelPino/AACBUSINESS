@@ -18,7 +18,6 @@ export class LandingComponent {
   
   constructor(
     private dataService: DataService,
-    private router: Router
     ) {
     this.subscription = this.dataService.data$.subscribe(data => {
       this.user = data as Users;

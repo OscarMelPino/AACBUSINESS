@@ -1,0 +1,26 @@
+<div class="recipe-list-column">
+    <mat-form-field appearance="outline" class="full-width">
+    <mat-label >Recipe name</mat-label>    
+        <input
+          matInput
+          placeholder="Type to filter"
+          [formControl]="filterControl"
+          (click)="$event.stopPropagation()"
+          autocomplete="off"
+        />
+    </mat-form-field>
+    
+    <div class="recipe-list">
+        <mat-card
+          *ngFor="let item of recipeList"
+          class="recipe-item"
+          [ngClass]="{ 'selected': item.recipeId === this.selectedRecipe?.recipeId }"
+          (click)="selectRecipe(item)"
+        >        
+            <span>
+                {{ item.name }}
+            </span>
+        </mat-card>
+    </div>
+</div>
+  

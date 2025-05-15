@@ -44,4 +44,14 @@
     background-color: #424242;
     color: white;
   }
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+  }
   
+  .close-button {
+    position: absolute;
+    top: -.65rem;
+    right: 0rem;
+  }

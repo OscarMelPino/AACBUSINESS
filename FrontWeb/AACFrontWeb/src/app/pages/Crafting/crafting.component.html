@@ -1,1 +1,14 @@
-<button mat-raised-button color="primary" (click)="openFormModal()"> Create Recipe</button>
+<div class="grid">
+    <div class="col col-button">
+      <button mat-raised-button color="primary" (click)="openFormModal()">Create Recipe</button>
+    </div>
+  
+    <div class="col-list">
+      <app-recipe-list></app-recipe-list>
+    </div>
+  
+    <div class="col col-editor">
+      <app-recipe-editor></app-recipe-editor>
+    </div>
+</div>
+  

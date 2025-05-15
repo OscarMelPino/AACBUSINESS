@@ -1,0 +1,37 @@
+.recipe-list-column {
+    height: 100%;
+    width: 95%; /* ensures the parent takes up the space of the column */
+    overflow: auto;
+  }
+  
+.recipe-list {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+width: 100%;
+}
+  
+.recipe-item {
+  width: 100%;
+  padding: 12px;
+  background-color: #424242;
+  color: white;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+  
+.recipe-item:hover {
+background-color: #616161;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.recipe-item.selected {
+  border-color: #30bece;
+  background-color: #616161;
+}

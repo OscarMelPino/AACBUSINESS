@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, reflectComponentType } from '@angular/core';
 import { config } from '../../environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -21,5 +21,9 @@ export class RecipeService {
     recipePost.name = recipe.name
     recipePost.itemsNeeded = JSON.stringify(recipe.items)
     return this.http.post<RecipeFormModel>(this.apiurl, recipePost)
+  }
+
+  public getRecipes(): Observable<Array<RecipePostModel>> {
+    return this.http.get<Array<RecipePostModel>>(this.apiurl)
   }
 }
