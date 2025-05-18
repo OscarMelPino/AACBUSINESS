@@ -1,4 +1,4 @@
-﻿namespace AACBackEnd.Models
+﻿namespace AACBackEnd.Models.Items
 {
     public class Item
     {

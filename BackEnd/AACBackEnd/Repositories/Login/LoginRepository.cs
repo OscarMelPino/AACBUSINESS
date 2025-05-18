@@ -1,9 +1,9 @@
 ﻿using AACBackEnd.Database;
 using AACBackEnd.Helpers;
-using AACBackEnd.Models;
+using AACBackEnd.Models.Login;
 using Microsoft.EntityFrameworkCore;
 
-namespace AACBackEnd.Repositories
+namespace AACBackEnd.Repositories.Login
 {
     public class LoginRepository : ILoginRepository
     {
@@ -12,7 +12,7 @@ namespace AACBackEnd.Repositories
         private readonly AppDbContext _context;
         public LoginRepository(AppDbContext context)
         {
-            this._context = context;
+            _context = context;
         }
 
         public async Task<NewLogin?> GetLoginByUsernameAndPassword(string username, string password)

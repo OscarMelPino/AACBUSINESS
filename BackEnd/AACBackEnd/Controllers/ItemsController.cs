@@ -1,6 +1,5 @@
 ﻿using AACBackEnd.Managers;
-using AACBackEnd.Models;
-using AACBackEnd.Repositories;
+using AACBackEnd.Models.Items;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,13 +11,11 @@ namespace AACBackEnd.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly ILogger<ItemsController> _logger;
-        private readonly IItemRepository _itemRepository;
         Managers.ItemManager _itemManager;
 
-        public ItemsController(ILogger<ItemsController> _logger, IItemRepository itemRepository, ItemManager itemManager)
+        public ItemsController(ILogger<ItemsController> _logger, ItemManager itemManager)
         {
             this._logger = _logger;
-            _itemRepository = itemRepository;
             this._itemManager = itemManager;
         }
 

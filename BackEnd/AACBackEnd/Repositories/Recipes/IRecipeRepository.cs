@@ -1,6 +1,6 @@
-﻿using AACBackEnd.Models;
+﻿using AACBackEnd.Models.Recipes;
 
-namespace AACBackEnd.Repositories
+namespace AACBackEnd.Repositories.Recipes
 {
     public interface IRecipeRepository
     {

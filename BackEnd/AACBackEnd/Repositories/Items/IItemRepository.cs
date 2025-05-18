@@ -1,6 +1,6 @@
-﻿using AACBackEnd.Models;
+﻿using AACBackEnd.Models.Items;
 
-namespace AACBackEnd.Repositories
+namespace AACBackEnd.Repositories.Items
 {
     public interface IItemRepository
     {

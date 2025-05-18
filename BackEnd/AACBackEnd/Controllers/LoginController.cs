@@ -1,6 +1,6 @@
 ﻿using AACBackEnd.Database.DBModels;
 using AACBackEnd.Managers;
-using AACBackEnd.Models;
+using AACBackEnd.Models.Login;
 using AACBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,13 +11,11 @@ namespace AACBackEnd.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
-        private readonly ILoginRepository _loginRepository;
         Managers.LoginManager _loginManager;
 
-        public LoginController(ILogger<LoginController> _logger, ILoginRepository loginRepository, LoginManager loginManager)
+        public LoginController(ILogger<LoginController> _logger,LoginManager loginManager)
         {
             this._logger = _logger;
-            _loginRepository = loginRepository;
             this._loginManager = loginManager;
         }
 

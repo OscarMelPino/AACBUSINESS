@@ -1,5 +1,6 @@
-﻿using AACBackEnd.Models;
-using AACBackEnd.Repositories;
+﻿using AACBackEnd.Models.Recipes;
+using AACBackEnd.Repositories.Items;
+using AACBackEnd.Repositories.Recipes;
 
 namespace AACBackEnd.Managers
 {

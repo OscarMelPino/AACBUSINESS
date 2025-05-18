@@ -1,5 +1,5 @@
 ﻿using AACBackEnd.Managers;
-using AACBackEnd.Models;
+using AACBackEnd.Models.Recipes;
 using AACBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +11,7 @@ namespace AACBackEnd.Controllers
     {
         private readonly ILogger<RecipeController> _logger;
         Managers.RecipeManager _recipeManager;
-        public RecipeController(ILogger<RecipeController> _logger, IRecipeRepository recipeRepository, IItemRepository itemRepository, RecipeManager recipeManager)
+        public RecipeController(ILogger<RecipeController> _logger, RecipeManager recipeManager)
         {
             this._logger = _logger;
             this._recipeManager = recipeManager;

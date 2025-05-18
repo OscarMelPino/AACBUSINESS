@@ -1,9 +1,9 @@
 ﻿using AACBackEnd.Database;
-using AACBackEnd.Models;
+using AACBackEnd.Models.Recipes;
 using Microsoft.EntityFrameworkCore;
 using System.Transactions;
 
-namespace AACBackEnd.Repositories
+namespace AACBackEnd.Repositories.Recipes
 {
     public class RecipeRepository : IRecipeRepository
     {

@@ -1,7 +1,7 @@
 ﻿using AACBackEnd.Database.DBModels;
-using AACBackEnd.Models;
+using AACBackEnd.Models.Login;
 
-namespace AACBackEnd.Repositories
+namespace AACBackEnd.Repositories.Login
 {
     public interface ILoginRepository
     {

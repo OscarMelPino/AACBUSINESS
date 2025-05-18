@@ -1,6 +1,6 @@
 ﻿using AACBackEnd.Database.DBModels;
-using AACBackEnd.Models;
-using AACBackEnd.Repositories;
+using AACBackEnd.Models.Login;
+using AACBackEnd.Repositories.Login;
 
 namespace AACBackEnd.Managers
 {

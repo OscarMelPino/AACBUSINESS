@@ -1,16 +1,16 @@
 ﻿using AACBackEnd.Database;
-using AACBackEnd.Models;
+using AACBackEnd.Models.Items;
 using Microsoft.EntityFrameworkCore;
 using System.Transactions;
 
-namespace AACBackEnd.Repositories
+namespace AACBackEnd.Repositories.Items
 {
     public class ItemRepository : IItemRepository
     {
         private readonly AppDbContext _context;
         public ItemRepository(AppDbContext context)
         {
-            this._context = context;
+            _context = context;
         }
 
         public async Task<Item> AddItem(Item item)

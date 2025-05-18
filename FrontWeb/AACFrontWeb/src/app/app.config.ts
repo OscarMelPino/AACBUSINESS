@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideToastr({
       positionClass: 'toast-top-center',
-      timeOut: 3000,
+      timeOut: 5000,
       closeButton: true,
       tapToDismiss: true,
       easeTime: 300
